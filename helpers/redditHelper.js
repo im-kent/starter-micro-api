@@ -6,7 +6,7 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 // Function to get the subreddits a user has posted or commented in
 const getUserActivitySubreddits = async (username) => {
     try {
-      const postsUrl = `https://www.reddit.com/user/${username}/submitted/.json?limit=10`; // Adjust limit as needed
+      const postsUrl = `https://www.reddit.com/user/${username}/submitted/.json?limit=100`; // Adjust limit as needed
       const commentsUrl = `https://www.reddit.com/user/${username}/comments/.json?limit=10`; // Adjust limit as needed
   
       // Wait before making the post request
