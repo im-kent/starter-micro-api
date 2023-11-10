@@ -1,4 +1,6 @@
 const express = require('express'); // Include the express module
+const redditHelper = require('./helpers/redditHelper');
+
 const app = express(); // Create an instance of express
 
 // Define a route for GET requests on the root URL '/'
@@ -26,6 +28,19 @@ app.get('/api/testGetParams/:query', async function (req, res) {
 
 	var response = {
 		message: 'Unsuccessful'
+	}
+	if(query){
+		response.message = 'Successful: ' + query
+	}
+    res.send(response)
+    
+}); 
+
+app.get('/api/userSubreddits', async function (req, res) {
+    let query = req.query.user			//If the URL is /search?q=something, query will be 'something'
+
+	var response = {
+		message: redditHelper.getUserActivitySubreddits(query)
 	}
 	if(query){
 		response.message = 'Successful: ' + query
