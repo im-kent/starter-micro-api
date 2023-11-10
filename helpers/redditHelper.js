@@ -6,16 +6,16 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 // Function to get the subreddits a user has posted or commented in
 const getUserActivitySubreddits = async (username) => {
     try {
-      const postsUrl = `https://www.reddit.com/user/${username}/submitted/.json?limit=200`; // Adjust limit as needed
-      const commentsUrl = `https://www.reddit.com/user/${username}/comments/.json?limit=200`; // Adjust limit as needed
+      const postsUrl = `https://www.reddit.com/user/${username}/submitted/.json?limit=10`; // Adjust limit as needed
+      const commentsUrl = `https://www.reddit.com/user/${username}/comments/.json?limit=10`; // Adjust limit as needed
   
       // Wait before making the post request
       await delay(3000);
       const postsResponse = await axios.get(postsUrl);
   
       // Wait before making the comments request
-      await delay(3000);
-      const commentsResponse = await axios.get(commentsUrl);
+    //   await delay(3000);
+    //   const commentsResponse = await axios.get(commentsUrl);
   
       const subreddits = new Set(); // Use a set to ensure uniqueness
   
@@ -25,9 +25,9 @@ const getUserActivitySubreddits = async (username) => {
       });
   
       // Add subreddits from comments
-      commentsResponse.data.data.children.forEach((comment) => {
-        subreddits.add(comment.data.subreddit);
-      });
+    //   commentsResponse.data.data.children.forEach((comment) => {
+    //     subreddits.add(comment.data.subreddit);
+    //   });
   
       // Convert the set to an array
       return Array.from(subreddits);
