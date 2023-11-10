@@ -13,7 +13,7 @@ const getUserActivitySubreddits = async (username) => {
       const postsResponse = await axios.get(postsUrl);
   
       // Wait before making the comments request
-      await delay(5000);
+      await delay(10000);
       const commentsResponse = await axios.get(commentsUrl);
   
       const subreddits = new Set(); // Use a set to ensure uniqueness
