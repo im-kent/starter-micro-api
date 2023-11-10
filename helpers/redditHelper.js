@@ -10,18 +10,18 @@ const getUserActivitySubreddits = async (username) => {
       const commentsUrl = `https://www.reddit.com/user/${username}/comments/.json?limit=100`; // Adjust limit as needed
   
       // Wait before making the post request
-      const postsResponse = await axios.get(postsUrl);
+    //   const postsResponse = await axios.get(postsUrl);
   
       // Wait before making the comments request
-      await delay(10000);
+    //   await delay(10000);
       const commentsResponse = await axios.get(commentsUrl);
   
       const subreddits = new Set(); // Use a set to ensure uniqueness
   
       // Add subreddits from posts
-      postsResponse.data.data.children.forEach((post) => {
-        subreddits.add(post.data.subreddit);
-      });
+    //   postsResponse.data.data.children.forEach((post) => {
+    //     subreddits.add(post.data.subreddit);
+    //   });
   
       // Add subreddits from comments
       commentsResponse.data.data.children.forEach((comment) => {
