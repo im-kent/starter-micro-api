@@ -43,7 +43,7 @@ app.get('/api/userSubreddits', async function (req, res) {
 		message: 'Unsuccessful'
 	}
 	if(query){
-		response.message = redditHelper.getUserActivitySubreddits(query)
+		response.message = await redditHelper.getUserActivitySubreddits(query)
 	}
     res.send(response)
     
