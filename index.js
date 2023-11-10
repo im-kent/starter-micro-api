@@ -40,10 +40,10 @@ app.get('/api/userSubreddits', async function (req, res) {
     let query = req.query.user			//If the URL is /search?q=something, query will be 'something'
 
 	var response = {
-		message: redditHelper.getUserActivitySubreddits(query)
+		message: 'Unsuccessful'
 	}
 	if(query){
-		response.message = 'Successful: ' + query
+		response.message = redditHelper.getUserActivitySubreddits(query)
 	}
     res.send(response)
     
