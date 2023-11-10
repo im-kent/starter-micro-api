@@ -43,7 +43,13 @@ app.get('/api/userSubreddits', async function (req, res) {
 		message: 'Unsuccessful'
 	}
 	if(query){
-		response.message = await redditHelper.getUserActivitySubreddits(query)
+        var arrayOfSubreddits = await redditHelper.getUserActivitySubreddits(query)
+		if(arrayOfSubreddits.length != 0){
+            response.message = arrayOfSubreddits
+        }
+        else{
+            response.message = 'Unsuccessful: Likely rate limited'
+        } 
 	}
     res.send(response)
     
