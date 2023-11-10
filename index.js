@@ -7,6 +7,34 @@ app.get('/', (req, res) => {
   res.json({ message: 'Hello, World!' });
 });
 
+
+app.get('/api/testGetQuery', async function (req, res) {
+    let query = req.query.q			//If the URL is /search?q=something, query will be 'something'
+
+	var response = {
+		message: 'Unsuccessful'
+	}
+	if(query){
+		response.message = 'Successful: ' + query
+	}
+    res.send(response)
+    
+}); 
+
+app.get('/api/testGetParams/:query', async function (req, res) {
+    let query = req.params.query;
+
+	var response = {
+		message: 'Unsuccessful'
+	}
+	if(query){
+		response.message = 'Successful: ' + query
+	}
+    res.send(response)
+    
+}); 
+
+
 // Start the server on port 3000
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server is running on port ' + process.env.PORT || 3000);
